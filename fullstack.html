@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fullstack-разработчик — резюме</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #100e0c;
+      --paper: #f6f1e8;
+      --paper-deep: #efe7da;
+      --ink: #1b1714;
+      --muted: #6d645b;
+      --line: rgba(27, 23, 20, 0.12);
+      --copper: #c4623a;
+      --copper-deep: #8d3d22;
+      --cream: #f3eadf;
+      --hero: #171410;
+      --chip: rgba(27, 23, 20, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      background:
+        radial-gradient(980px 520px at 0% -8%, rgba(196, 98, 58, 0.38), transparent 58%),
+        radial-gradient(760px 480px at 100% 0%, rgba(62, 108, 98, 0.32), transparent 55%),
+        radial-gradient(900px 640px at 85% 110%, rgba(196, 98, 58, 0.16), transparent 50%),
+        var(--bg);
+      padding: 56px 28px 80px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at center, #000 20%, transparent 78%);
+    }
+
+    .sheet {
+      position: relative;
+      max-width: 1080px;
+      margin: 0 auto;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 120px),
+        linear-gradient(180deg, #fbf7f1 0%, var(--paper) 28%, #f3ebdf 100%);
+      border-radius: 36px;
+      padding: 22px;
+      box-shadow:
+        0 0 0 1px rgba(255, 244, 230, 0.08),
+        0 30px 70px rgba(0, 0, 0, 0.45),
+        0 2px 0 rgba(255, 255, 255, 0.35) inset;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1.5fr) minmax(220px, 0.72fr);
+      gap: 36px;
+      align-items: start;
+      background:
+        radial-gradient(420px 180px at 92% 0%, rgba(196, 98, 58, 0.45), transparent 70%),
+        linear-gradient(160deg, #221c17 0%, var(--hero) 55%, #12100e 100%);
+      color: var(--cream);
+      border-radius: 26px;
+      padding: 40px 44px 36px;
+    }
+
+    .portrait {
+      width: 168px;
+      height: 204px;
+      object-fit: cover;
+      object-position: center 18%;
+      border-radius: 32px;
+      border: 1px solid rgba(255, 244, 230, 0.35);
+      box-shadow:
+        0 0 0 6px rgba(196, 98, 58, 0.22),
+        0 18px 36px rgba(0, 0, 0, 0.38);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #e7b49a;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Unbounded", "Segoe UI", sans-serif;
+      font-size: clamp(34px, 4.4vw, 54px);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      max-width: 46ch;
+      margin: 22px 0 0;
+      color: rgba(243, 234, 223, 0.78);
+      font-size: 17px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .stats li {
+      padding: 12px 14px 11px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stats b {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .stats span {
+      display: block;
+      margin-top: 2px;
+      color: rgba(243, 234, 223, 0.58);
+      font-size: 12px;
+    }
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-self: end;
+    }
+
+    .contact {
+      display: block;
+      padding: 16px 18px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    a.contact:hover {
+      border-color: rgba(231, 180, 154, 0.55);
+      background: rgba(196, 98, 58, 0.16);
+    }
+
+    .contact small {
+      display: block;
+      margin-bottom: 4px;
+      color: #e7b49a;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .contact strong {
+      font-size: 16px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .content {
+      padding: 42px 40px 28px;
+    }
+
+    .about {
+      margin: 0 0 42px;
+      padding: 8px 8px 0 0;
+    }
+
+    .about p {
+      margin: 0 0 14px;
+      max-width: 78ch;
+      font-size: 17px;
+    }
+
+    .about p:last-child { margin-bottom: 0; }
+
+    .stack {
+      color: var(--copper-deep);
+      font-weight: 700;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(270px, 0.82fr);
+      gap: 42px;
+      align-items: start;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 0 0 22px;
+      font-family: "Unbounded", "Segoe UI", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section-title span {
+      color: var(--copper);
+      font-size: 12px;
+    }
+
+    .job {
+      position: relative;
+      margin: 0 0 22px;
+      padding: 24px 24px 8px 28px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.46);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 10px 30px rgba(80, 48, 24, 0.05);
+    }
+
+    .job::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      bottom: 22px;
+      width: 3px;
+      border-radius: 3px;
+      background: linear-gradient(180deg, var(--copper), #e7c2a4);
+    }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .company {
+      margin: 0 0 6px;
+      color: var(--copper-deep);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: "Unbounded", "Segoe UI", sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+    }
+
+    .tenure {
+      flex: 0 0 auto;
+      margin: 2px 0 0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(196, 98, 58, 0.12);
+      color: var(--copper-deep);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .period {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .job-lead {
+      margin: 16px 0 8px;
+      font-size: 15.5px;
+    }
+
+    .job ul {
+      margin: 8px 0 16px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .job li {
+      position: relative;
+      margin: 0 0 12px;
+      padding-left: 18px;
+      color: #3a342e;
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+
+    .job li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--copper);
+    }
+
+    .side {
+      position: sticky;
+      top: 24px;
+    }
+
+    .panel {
+      margin-bottom: 18px;
+      padding: 22px 22px 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .group { margin-bottom: 16px; }
+
+    .group:last-child { margin-bottom: 0; }
+
+    .group h3 {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tags span {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(27, 23, 20, 0.06);
+      font-size: 12.5px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .course {
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .course:first-of-type { border-top: 0; padding-top: 0; }
+
+    .course b {
+      display: block;
+      font-size: 14.5px;
+      line-height: 1.35;
+    }
+
+    .course span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      body { padding: 18px 12px 36px; }
+
+      .sheet { border-radius: 24px; padding: 12px; }
+
+      .hero {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 18px 16px;
+        padding: 22px 18px 20px;
+        border-radius: 18px;
+      }
+
+      .portrait {
+        width: 108px;
+        height: 132px;
+        border-radius: 24px;
+        box-shadow:
+          0 0 0 4px rgba(196, 98, 58, 0.22),
+          0 12px 24px rgba(0, 0, 0, 0.32);
+      }
+
+      .contacts { grid-column: 1 / -1; }
+
+      .content { padding: 28px 12px 16px; }
+
+      .layout { grid-template-columns: 1fr; gap: 28px; }
+
+      .side { position: static; }
+
+      .period { font-size: 13px; }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      body::before { display: none; }
+
+      .sheet {
+        box-shadow: none;
+        max-width: none;
+        border-radius: 0;
+      }
+
+      .side { position: static; }
+
+      .hero, .job, .panel, .stats li, .contact {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="hero">
+      <img class="portrait" src="photo_2026-10-26_22-15-39.jpg" alt="Фото">
+      <div>
+        <p class="eyebrow">Резюме</p>
+        <h1>Fullstack-<br>разработчик</h1>
+        <p class="lead">Корпоративные интерфейсы и серверная логика. Продукт целиком — от схемы базы до сложного UI.</p>
+        <ul class="stats">
+          <li><b>Москва</b><span>локация</span></li>
+          <li><b>4 года 5 мес.</b><span>коммерческий опыт</span></li>
+          <li><b>Middle</b><span>текущий уровень</span></li>
+          <li><b>AI + CI/CD</b><span>LLM, RAGFlow, Docker</span></li>
+        </ul>
+      </div>
+      <div class="contacts">
+        <a class="contact" href="tel:+79518637955">
+          <small>Телефон</small>
+          <strong>8 951 863-79-55</strong>
+        </a>
+        <a class="contact" href="mailto:airvaffeforce@yandex.ru">
+          <small>Почта</small>
+          <strong>airvaffeforce@yandex.ru</strong>
+        </a>
+        <a class="contact" href="https://t.me/Eragon_163" target="_blank" rel="noopener noreferrer">
+          <small>Telegram</small>
+          <strong>https://t.me/Eragon_163</strong>
+        </a>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="about">
+        <h2 class="section-title"><span>01</span> О себе</h2>
+        <p>Fullstack-разработчик с коммерческим опытом более 4 лет. Специализируюсь на создании сложных корпоративных интерфейсов и проектировании серверной логики.</p>
+        <p><span class="stack">Стек:</span> React 18, Next.js 14, TypeScript, Node.js, PostgreSQL.</p>
+        <p><span class="stack">Козырь:</span> встроил уже развёрнутый RAGFlow в продукт — прокси на бэкенде и UI на фронте — и настраивал полный цикл CI/CD и сервер (Docker, Ubuntu, Nginx).</p>
+        <p>Умею брать на себя ответственность за продукт целиком — от проектирования схемы базы данных до реализации сложного UI с виртуализацией таблиц и Kanban-досками. Ищу долгосрочный проект, где смогу применять системный подход и современные инженерные практики.</p>
+      </section>
+
+      <div class="layout">
+        <section>
+          <h2 class="section-title"><span>02</span> Опыт · 4 года 5 месяцев</h2>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <p class="company">М-тех (М.Видео) · ITSM</p>
+                <h2>Fullstack developer</h2>
+              </div>
+              <p class="tenure">1 год</p>
+            </div>
+            <p class="period">ноябрь 2025 — настоящее время · Москва · Middle</p>
+            <p class="job-lead">Разработка и архитектура корпоративного ITSM веб-приложения Aura на Next.js 14. Продукт включает управление инцидентами, активами, картами локаций и AI-ассистентом.</p>
+            <ul>
+              <li><b>Фронтенд-архитектура.</b> Построил SPA на Next.js 14 с TypeScript, Redux Toolkit (RTK Query) и композицией Material UI + Tailwind CSS. Внедрил модульную структуру, ESLint, Prettier и pre-commit хуки Husky.</li>
+              <li><b>Модули.</b> Полный цикл работы с заявками: списки, карточки, превью, Kanban-доски, каталоги услуг и систем, «Мои обращения», формы на React Hook Form + Yup/Valibot. Для больших данных — MUI X Data Grid Premium с виртуализацией, таблицы на тысячи строк.</li>
+              <li><b>Гео-сервисы.</b> Интерактивная карта на Leaflet: объекты предприятия, инциденты и алерты, поиск и фильтрация по статусу (с отказами / без).</li>
+              <li><b>API и инфраструктура.</b> REST API-слой на Node-RED, интеграция с фронтендом через Axios. Кеш частых запросов в Redis (Docker), меньше нагрузка на основную БД.</li>
+              <li><b>Базы данных.</b> Схема PostgreSQL, таблицы, B-Tree и уникальные индексы под CRUD. База в Docker. Сложные запросы MSSQL, рефакторинг представлений (Views) и индексация.</li>
+              <li><b>AI.</b> Подключил RAGFlow к приложению: виджет чата и UI подсказки оператору в карточке заявки. Ответ идёт через бэкенд потоком, рядом источники из базы знаний.</li>
+              <li><b>CI/CD и сервер.</b> Инфраструктура на Ubuntu: Nginx, Docker, GitLab Runner, деплой через GitLab CI/CD. Миграция на схему Nginx (фронт) → 4 Docker-контейнера (бэк) → Nginx (бэк) → Node-RED в Docker.</li>
+              <li><b>Статусная модель первой линии.</b> От схемы в PostgreSQL и API на Node-RED до интерфейса портала. Статусы инженеров, графики смен 2/2 и 5/2, квоты «Ауры» и «Автофака», автораспределение заявок в Assyst по FIFO и нагрузке с учётом SLA, журналы изменений, права администратора и супер-администратора. Базу, бэкенд и фронтенд вёл целиком.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <p class="company">ДМ-тех (Детский мир) · торговля</p>
+                <h2>Front-end developer</h2>
+              </div>
+              <p class="tenure">3 года 6 мес.</p>
+            </div>
+            <p class="period">июнь 2022 — ноябрь 2025 · Москва · Middle</p>
+            <p class="job-lead">Личный кабинет поставщика — высоконагруженное мультисервисное приложение с ролями «Поставщик» и «Модератор» (реклама, акции, договоры, склады, авторизация), библиотека Admin UI-KIT и приложение Scopes: таблицы, фильтры, поиск, Redux и URL.</p>
+            <ul>
+              <li>Вёрстка лендингов и интерфейсов по макетам в Figma.</li>
+              <li>Разработка, оптимизация и сопровождение компонентов на React.</li>
+              <li>Интеграция с BFF и сервером по REST API, создание контрактов.</li>
+              <li>Redux: reducers, slices, selectors, Redux Toolkit, Redux Query.</li>
+              <li>Маршрутизация React Router Dom, миграция 5 → 6.</li>
+              <li>Валидация форм через React Hook Form, сложные UI-структуры, в том числе древовидные и Google Captcha.</li>
+              <li>Окружение: Webpack, Vite, ESLint. GitLab CI/CD, Docker, GitLab.</li>
+              <li>Миграция тестов с Cypress на Playwright, unit-тесты Jest.</li>
+              <li>Документация в Confluence, код-ревью, Agile (Scrum, Kanban), публикация UI-компонентов в Storybook.</li>
+            </ul>
+          </article>
+        </section>
+
+        <aside class="side">
+          <section class="panel">
+            <h2 class="section-title"><span>03</span> Навыки</h2>
+
+            <div class="group">
+              <h3>Фронтенд</h3>
+              <div class="tags">
+                <span>JavaScript</span><span>TypeScript</span><span>React 18</span><span>Next.js 14</span>
+                <span>Redux Toolkit</span><span>RTK Query</span><span>Zustand</span><span>React Router</span>
+                <span>Material UI v5</span><span>Tailwind CSS</span><span>Styled Components</span><span>Emotion</span>
+                <span>React Hook Form</span><span>Yup</span><span>Valibot</span><span>Storybook</span>
+                <span>Leaflet</span><span>HTML5</span><span>CSS3</span><span>Figma</span>
+              </div>
+            </div>
+
+            <div class="group">
+              <h3>Бэкенд и данные</h3>
+              <div class="tags">
+                <span>Node.js</span><span>Express.js</span><span>Koa</span><span>Node-RED</span>
+                <span>REST API</span><span>Axios</span><span>Swagger</span><span>Postman</span>
+                <span>PostgreSQL</span><span>MSSQL</span><span>Prisma</span><span>Redis</span>
+                <span>RAGFlow</span>
+              </div>
+            </div>
+
+            <div class="group">
+              <h3>Инфраструктура</h3>
+              <div class="tags">
+                <span>Ubuntu</span><span>Linux</span><span>Docker</span><span>Nginx</span>
+                <span>GitLab CI/CD</span><span>GitLab Runner</span><span>Webpack</span><span>Vite</span>
+                <span>ESLint</span><span>Prettier</span><span>Husky</span><span>Unleash</span>
+              </div>
+            </div>
+
+            <div class="group">
+              <h3>Качество и процесс</h3>
+              <div class="tags">
+                <span>Jest</span><span>Cypress</span><span>Playwright</span><span>Jira</span>
+                <span>Confluence</span><span>Agile</span><span>Scrum</span><span>Kanban</span>
+                <span>код-ревью</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2 class="section-title"><span>04</span> Курсы</h2>
+            <div class="course">
+              <b>Фронтенд-разработчик</b>
+              <span>Институт 2035</span>
+            </div>
+            <div class="course">
+              <b>Frontend Developer</b>
+              <span>Skill Factory</span>
+            </div>
+            <div class="course">
+              <b>JS в разработке современных интерфейсов</b>
+              <span>HTML Academy</span>
+            </div>
+            <div class="course">
+              <b>Английский язык в профессиональной коммуникации</b>
+              <span>Космическая академия им. Можайского</span>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

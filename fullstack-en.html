@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fullstack Developer — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #100e0c;
+      --paper: #f6f1e8;
+      --paper-deep: #efe7da;
+      --ink: #1b1714;
+      --muted: #6d645b;
+      --line: rgba(27, 23, 20, 0.12);
+      --copper: #c4623a;
+      --copper-deep: #8d3d22;
+      --cream: #f3eadf;
+      --hero: #171410;
+      --chip: rgba(27, 23, 20, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      background:
+        radial-gradient(980px 520px at 0% -8%, rgba(196, 98, 58, 0.38), transparent 58%),
+        radial-gradient(760px 480px at 100% 0%, rgba(62, 108, 98, 0.32), transparent 55%),
+        radial-gradient(900px 640px at 85% 110%, rgba(196, 98, 58, 0.16), transparent 50%),
+        var(--bg);
+      padding: 56px 28px 80px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at center, #000 20%, transparent 78%);
+    }
+
+    .sheet {
+      position: relative;
+      max-width: 1080px;
+      margin: 0 auto;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 120px),
+        linear-gradient(180deg, #fbf7f1 0%, var(--paper) 28%, #f3ebdf 100%);
+      border-radius: 36px;
+      padding: 22px;
+      box-shadow:
+        0 0 0 1px rgba(255, 244, 230, 0.08),
+        0 30px 70px rgba(0, 0, 0, 0.45),
+        0 2px 0 rgba(255, 255, 255, 0.35) inset;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1.5fr) minmax(220px, 0.72fr);
+      gap: 36px;
+      align-items: start;
+      background:
+        radial-gradient(420px 180px at 92% 0%, rgba(196, 98, 58, 0.45), transparent 70%),
+        linear-gradient(160deg, #221c17 0%, var(--hero) 55%, #12100e 100%);
+      color: var(--cream);
+      border-radius: 26px;
+      padding: 40px 44px 36px;
+    }
+
+    .portrait {
+      width: 168px;
+      height: 204px;
+      object-fit: cover;
+      object-position: center 18%;
+      border-radius: 32px;
+      border: 1px solid rgba(255, 244, 230, 0.35);
+      box-shadow:
+        0 0 0 6px rgba(196, 98, 58, 0.22),
+        0 18px 36px rgba(0, 0, 0, 0.38);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #e7b49a;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Unbounded", "Segoe UI", sans-serif;
+      font-size: clamp(34px, 4.4vw, 54px);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      max-width: 46ch;
+      margin: 22px 0 0;
+      color: rgba(243, 234, 223, 0.78);
+      font-size: 17px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .stats li {
+      padding: 12px 14px 11px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stats b {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .stats span {
+      display: block;
+      margin-top: 2px;
+      color: rgba(243, 234, 223, 0.58);
+      font-size: 12px;
+    }
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-self: end;
+    }
+
+    .contact {
+      display: block;
+      padding: 16px 18px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    a.contact:hover {
+      border-color: rgba(231, 180, 154, 0.55);
+      background: rgba(196, 98, 58, 0.16);
+    }
+
+    .contact small {
+      display: block;
+      margin-bottom: 4px;
+      color: #e7b49a;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .contact strong {
+      font-size: 16px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .content {
+      padding: 42px 40px 28px;
+    }
+
+    .about {
+      margin: 0 0 42px;
+      padding: 8px 8px 0 0;
+    }
+
+    .about p {
+      margin: 0 0 14px;
+      max-width: 78ch;
+      font-size: 17px;
+    }
+
+    .about p:last-child { margin-bottom: 0; }
+
+    .stack {
+      color: var(--copper-deep);
+      font-weight: 700;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(270px, 0.82fr);
+      gap: 42px;
+      align-items: start;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 0 0 22px;
+      font-family: "Unbounded", "Segoe UI", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section-title span {
+      color: var(--copper);
+      font-size: 12px;
+    }
+
+    .job {
+      position: relative;
+      margin: 0 0 22px;
+      padding: 24px 24px 8px 28px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.46);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 10px 30px rgba(80, 48, 24, 0.05);
+    }
+
+    .job::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      bottom: 22px;
+      width: 3px;
+      border-radius: 3px;
+      background: linear-gradient(180deg, var(--copper), #e7c2a4);
+    }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .company {
+      margin: 0 0 6px;
+      color: var(--copper-deep);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: "Unbounded", "Segoe UI", sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+    }
+
+    .tenure {
+      flex: 0 0 auto;
+      margin: 2px 0 0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(196, 98, 58, 0.12);
+      color: var(--copper-deep);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .period {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .job-lead {
+      margin: 16px 0 8px;
+      font-size: 15.5px;
+    }
+
+    .job ul {
+      margin: 8px 0 16px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .job li {
+      position: relative;
+      margin: 0 0 12px;
+      padding-left: 18px;
+      color: #3a342e;
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+
+    .job li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--copper);
+    }
+
+    .side {
+      position: sticky;
+      top: 24px;
+    }
+
+    .panel {
+      margin-bottom: 18px;
+      padding: 22px 22px 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .group { margin-bottom: 16px; }
+
+    .group:last-child { margin-bottom: 0; }
+
+    .group h3 {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tags span {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(27, 23, 20, 0.06);
+      font-size: 12.5px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .course {
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .course:first-of-type { border-top: 0; padding-top: 0; }
+
+    .course b {
+      display: block;
+      font-size: 14.5px;
+      line-height: 1.35;
+    }
+
+    .course span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      body { padding: 18px 12px 36px; }
+
+      .sheet { border-radius: 24px; padding: 12px; }
+
+      .hero {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 18px 16px;
+        padding: 22px 18px 20px;
+        border-radius: 18px;
+      }
+
+      .portrait {
+        width: 108px;
+        height: 132px;
+        border-radius: 24px;
+        box-shadow:
+          0 0 0 4px rgba(196, 98, 58, 0.22),
+          0 12px 24px rgba(0, 0, 0, 0.32);
+      }
+
+      .contacts { grid-column: 1 / -1; }
+
+      .content { padding: 28px 12px 16px; }
+
+      .layout { grid-template-columns: 1fr; gap: 28px; }
+
+      .side { position: static; }
+
+      .period { font-size: 13px; }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      body::before { display: none; }
+
+      .sheet {
+        box-shadow: none;
+        max-width: none;
+        border-radius: 0;
+      }
+
+      .side { position: static; }
+
+      .hero, .job, .panel, .stats li, .contact {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="hero">
+      <img class="portrait" src="photo_2026-10-26_22-15-39.jpg" alt="Photo">
+      <div>
+        <p class="eyebrow">Resume</p>
+        <h1>Fullstack<br>Developer</h1>
+        <p class="lead">Corporate interfaces and server-side logic. The whole product, from the database schema to a complex UI.</p>
+        <ul class="stats">
+          <li><b>Moscow</b><span>location</span></li>
+          <li><b>4 years 5 months</b><span>commercial experience</span></li>
+          <li><b>Middle</b><span>current level</span></li>
+          <li><b>AI + CI/CD</b><span>LLM, RAGFlow, Docker</span></li>
+        </ul>
+      </div>
+      <div class="contacts">
+        <a class="contact" href="tel:+79518637955">
+          <small>Phone</small>
+          <strong>8 951 863-79-55</strong>
+        </a>
+        <a class="contact" href="mailto:airvaffeforce@yandex.ru">
+          <small>Email</small>
+          <strong>airvaffeforce@yandex.ru</strong>
+        </a>
+        <a class="contact" href="https://t.me/Eragon_163" target="_blank" rel="noopener noreferrer">
+          <small>Telegram</small>
+          <strong>https://t.me/Eragon_163</strong>
+        </a>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="about">
+        <h2 class="section-title"><span>01</span> About</h2>
+        <p>Fullstack developer with more than 4 years of commercial experience. I build complex corporate interfaces and server-side logic.</p>
+        <p><span class="stack">Stack:</span> React 18, Next.js 14, TypeScript, Node.js, PostgreSQL.</p>
+        <p><span class="stack">Edge:</span> connected an already deployed RAGFlow instance to the product — a backend proxy and a frontend UI — and set up CI/CD and the server (Docker, Ubuntu, Nginx).</p>
+        <p>I own the product end to end, from the database schema to a complex UI with virtualized tables and Kanban boards. Looking for a long-term project where I can use a systematic approach and current engineering practice.</p>
+      </section>
+
+      <div class="layout">
+        <section>
+          <h2 class="section-title"><span>02</span> Experience · 4 years 5 months</h2>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <p class="company">M.Tech (M.Video) · ITSM</p>
+                <h2>Fullstack developer</h2>
+              </div>
+              <p class="tenure">1 year</p>
+            </div>
+            <p class="period">November 2025 — present · Moscow · Middle</p>
+            <p class="job-lead">Building and architecting the corporate ITSM web app Aura on Next.js 14. The product covers incidents, assets, location maps, and an AI assistant.</p>
+            <ul>
+              <li><b>Frontend architecture.</b> Built an SPA on Next.js 14 with TypeScript, Redux Toolkit (RTK Query), and Material UI plus Tailwind CSS. Set up a modular structure, ESLint, Prettier, and Husky pre-commit hooks.</li>
+              <li><b>Modules.</b> Full request flow: lists, cards, preview, Kanban boards, service and system catalogs, My requests, forms with React Hook Form plus Yup/Valibot. For large data, MUI X Data Grid Premium with virtualization, tables of thousands of rows.</li>
+              <li><b>Maps.</b> Interactive Leaflet map: company sites, incidents and alerts, search and filtering by status (with outages / without).</li>
+              <li><b>API and infrastructure.</b> REST API layer on Node-RED, frontend integration via Axios. Redis cache in Docker for frequent queries, less load on the main database.</li>
+              <li><b>Databases.</b> PostgreSQL schema, tables, B-Tree and unique indexes for CRUD. Database in Docker. Complex MSSQL queries, view refactoring, and indexing.</li>
+              <li><b>AI.</b> Connected RAGFlow to the app: a chat widget and an operator hint UI on the request card. The answer is streamed through the backend, with knowledge-base sources beside it.</li>
+              <li><b>CI/CD and server.</b> Ubuntu infrastructure: Nginx, Docker, GitLab Runner, deploy via GitLab CI/CD. Migrated to Nginx (frontend) → 4 Docker containers (backend) → Nginx (backend) → Node-RED in Docker.</li>
+              <li><b>First-line status model.</b> From the PostgreSQL schema and the Node-RED API to the portal UI. Engineer statuses, 2/2 and 5/2 shift schedules, Aura and Autofac quotas, auto-assignment of Assyst tickets by FIFO and load with SLA in mind, change logs, admin and super-admin permissions. Owned the database, backend, and frontend.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <p class="company">DM-Tech (Detsky Mir) · retail</p>
+                <h2>Front-end developer</h2>
+              </div>
+              <p class="tenure">3 years 6 months</p>
+            </div>
+            <p class="period">June 2022 — November 2025 · Moscow · Middle</p>
+            <p class="job-lead">Supplier account — a high-load multi-service app with Supplier and Moderator roles (ads, promotions, contracts, warehouses, auth), an Admin UI-KIT library, and the Scopes app: tables, filters, search, Redux, and the URL.</p>
+            <ul>
+              <li>Landing pages and interfaces from Figma mockups.</li>
+              <li>Built, optimized, and maintained React components.</li>
+              <li>Integration with the BFF and the server over REST API, writing contracts.</li>
+              <li>Redux: reducers, slices, selectors, Redux Toolkit, Redux Query.</li>
+              <li>Routing with React Router Dom, migration from 5 to 6.</li>
+              <li>Form validation with React Hook Form, complex UI including trees and Google reCAPTCHA.</li>
+              <li>Tooling: Webpack, Vite, ESLint. GitLab CI/CD, Docker, GitLab.</li>
+              <li>Migrated tests from Cypress to Playwright, Jest unit tests.</li>
+              <li>Confluence documentation, code review, Agile (Scrum, Kanban), publishing UI components in Storybook.</li>
+            </ul>
+          </article>
+        </section>
+
+        <aside class="side">
+          <section class="panel">
+            <h2 class="section-title"><span>03</span> Skills</h2>
+
+            <div class="group">
+              <h3>Frontend</h3>
+              <div class="tags">
+                <span>JavaScript</span><span>TypeScript</span><span>React 18</span><span>Next.js 14</span>
+                <span>Redux Toolkit</span><span>RTK Query</span><span>Zustand</span><span>React Router</span>
+                <span>Material UI v5</span><span>Tailwind CSS</span><span>Styled Components</span><span>Emotion</span>
+                <span>React Hook Form</span><span>Yup</span><span>Valibot</span><span>Storybook</span>
+                <span>Leaflet</span><span>HTML5</span><span>CSS3</span><span>Figma</span>
+              </div>
+            </div>
+
+            <div class="group">
+              <h3>Backend and data</h3>
+              <div class="tags">
+                <span>Node.js</span><span>Express.js</span><span>Koa</span><span>Node-RED</span>
+                <span>REST API</span><span>Axios</span><span>Swagger</span><span>Postman</span>
+                <span>PostgreSQL</span><span>MSSQL</span><span>Prisma</span><span>Redis</span>
+                <span>RAGFlow</span>
+              </div>
+            </div>
+
+            <div class="group">
+              <h3>Infrastructure</h3>
+              <div class="tags">
+                <span>Ubuntu</span><span>Linux</span><span>Docker</span><span>Nginx</span>
+                <span>GitLab CI/CD</span><span>GitLab Runner</span><span>Webpack</span><span>Vite</span>
+                <span>ESLint</span><span>Prettier</span><span>Husky</span><span>Unleash</span>
+              </div>
+            </div>
+
+            <div class="group">
+              <h3>Quality and process</h3>
+              <div class="tags">
+                <span>Jest</span><span>Cypress</span><span>Playwright</span><span>Jira</span>
+                <span>Confluence</span><span>Agile</span><span>Scrum</span><span>Kanban</span>
+                <span>code review</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2 class="section-title"><span>04</span> Courses</h2>
+            <div class="course">
+              <b>Frontend Developer</b>
+              <span>University 2035</span>
+            </div>
+            <div class="course">
+              <b>Frontend Developer</b>
+              <span>Skill Factory</span>
+            </div>
+            <div class="course">
+              <b>JavaScript for modern interfaces</b>
+              <span>HTML Academy</span>
+            </div>
+            <div class="course">
+              <b>English for professional communication</b>
+              <span>Mozhaisky Military Space Academy</span>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
